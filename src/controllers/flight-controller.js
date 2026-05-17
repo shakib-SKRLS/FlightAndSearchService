@@ -1,5 +1,5 @@
 const {FlightService} = require('../services/index');
-const {SuccessCodes, ServerErrorCodes} = require('../utils/error-codes');
+const {SuccessCodes, ServerErrorCodes} = require('../utils/error-code');
 const flightService = new FlightService();
 
 const create = async (req, res) => {
