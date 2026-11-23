@@ -42,6 +42,14 @@ const destroy = async (req, res) => {
 const get = async (req, res) => {
     try {
         const city = await cityService.getCity(req.params.id);
+        if(!city){
+            return res.status(404).json({
+                success: false,
+                message: "City not found",
+                data: {},
+                err: {}
+            });
+        }
         return res.status(200).json({
             success: true,
             message: "Successfully fetched a city",
