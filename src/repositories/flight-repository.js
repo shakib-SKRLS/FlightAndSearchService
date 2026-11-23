@@ -57,12 +57,14 @@ class FlightRepository{
     }
     async updateFlight(flightId, data){
         try {
-            await Flights.update(data, {
+            const [updated] = await Flights.update(data, {
                 where: {
                     id: flightId
                 }
             });
-          
+            if(!updated){
+                throw {error: "Flight not found"};
+            }
             return true;
         } catch (error) {
             console.log("Something went wrong in the flight repository layer");
